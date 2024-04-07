@@ -22,7 +22,7 @@ public interface EventRepository {
 
             ),
             @Result(property = "attendees",column = "event_id",
-            many = @Many(select = "org.example.exceptionhandling.Repository.AttendeeRepository.getById")
+            many = @Many(select = "org.example.exceptionhandling.Repository.AttendeeRepository.getAttendeeByEventId")
             )
 
     })

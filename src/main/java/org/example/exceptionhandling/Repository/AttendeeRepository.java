@@ -39,4 +39,13 @@ public interface AttendeeRepository {
         DELETE FROM attendees WHERE attendee_id = #{id}
     """)
     Attendee deleteAttendee(int id);
+    @Select("""
+    
+    SELECT a.* FROM attendees a INNER JOIN event_attendee ea on a.attendee_id = ea.attendee_id
+    WHERE ea.event_id= #{eventId} ORDER BY a.attendee_id;
+
+    """)
+    @ResultMap("attendeeMapping")
+
+    List<Attendee> getAttendeeByEventId(Integer eventId);
 }
